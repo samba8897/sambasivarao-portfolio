@@ -410,7 +410,7 @@ function App() {
               {[
                 {
                   title: "Education",
-                  text: "B.Tech in Computer Science Engineering, KHIT, graduating in April 2025 with GPA 7.67.",
+                  text: "B.Tech in Computer Science Engineering, KHIT, graduated in April 2025 with GPA 7.67.",
                 },
                 {
                   title: "Strength",
