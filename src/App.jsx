@@ -253,19 +253,24 @@ function App() {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 40 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-[60] md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[999] bg-black/80 px-4 py-5 backdrop-blur-sm md:hidden"
+              onClick={() => setIsMenuOpen(false)}
             >
-              <div
-                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
-              />
-              <div className="absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col border-l border-white/10 bg-[#0b1220]/95 backdrop-blur-xl p-6 shadow-2xl z-[70]">
+              <motion.div
+                initial={{ opacity: 0, y: -18, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -18, scale: 0.98 }}
+                transition={{ duration: 0.25 }}
+                onClick={(e) => e.stopPropagation()}
+                className="mx-auto w-full max-w-sm rounded-3xl border border-white/10 bg-[#08101c] p-6 shadow-2xl"
+              >
                 <div className="mb-8 flex items-center justify-between">
                   <span className="text-lg font-semibold">Menu</span>
+
                   <button
                     type="button"
                     onClick={() => setIsMenuOpen(false)}
@@ -275,26 +280,27 @@ function App() {
                   </button>
                 </div>
 
-                <div className="flex flex-col gap-5 text-base text-white/80">
+                <div className="flex flex-col gap-4 text-base text-white/80">
                   {navLinks.map((link) => (
                     <a
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="transition hover:text-white"
+                      className="rounded-xl px-4 py-3 transition hover:bg-white/5 hover:text-white"
                     >
                       {link.label}
                     </a>
                   ))}
                 </div>
 
-                <div className="mt-auto grid gap-3 pt-8">
+                <div className="mt-8 grid gap-3">
                   <a
                     href="mailto:sambasivarao3521@gmail.com"
                     className="rounded-xl bg-blue-500 px-4 py-3 text-center font-semibold text-white transition hover:bg-blue-400"
                   >
                     Email Me
                   </a>
+
                   <a
                     href="https://github.com/samba8897"
                     target="_blank"
@@ -304,7 +310,7 @@ function App() {
                     GitHub
                   </a>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
